@@ -3,8 +3,20 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>	
   <body>
+	 <div class="title">
+      <h3>
+      Dungeon World Dice Roller
+      </h3>
+      <div class="description">
+        <p>
+        Should be pretty much everything you need for Dungeon World!
+        Simply Click "Roll 2d6" to do a standard roll or pick the number and kind of die for a custom roll.
+        You can also automatically add a modifier to your rolls with the "Modifier" number.
+        </p>
+      </div>
+    </div>
     <div>
-      <span>Modifier: </span><input type="number" id="mod" style="width: 2em;" min="-2" max="3" value="0"/>
+      <span>Modifier: </span><input type="number" id="mod" style="width: 3em;" min="-2" max="3" value="0"/>
       <p>
         <input type="button" value="Roll 2d6" onclick="roll2d6()"/>
         <span> Number: </span><input type="number" id="dNumber" min="1" max="20"  style="width: 3em;" value="1"/>
