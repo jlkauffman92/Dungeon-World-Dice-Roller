@@ -1,0 +1,45 @@
+<html>
+  <body>
+    <div>
+      <span>Modifier: </span><input type="number" id="mod" style="width: 2em;" min="-2" max="3" value="0"/>
+      <p>
+        <input type="button" value="Roll 2d6" onclick="roll2d6()"/>
+        <span> Number: </span><input type="number" id="dNumber" min="1" max="20"  style="width: 2em;" value="1"/>
+        <span> Sides: </span><input type="number" id="dSides" min="4" max="20" style="width: 3em;" value="4"/>
+        <input type="button" value="Roll Custom" onclick="rollcustom()" />
+      </p>
+      <p>
+        Result: <span id="output"></span>
+      </p>
+    </div>
+    <script>
+var output = document.getElementById('output');
+
+function roll2d6(){
+	var modifier = parseInt(document.getElementById('mod').value);
+	var d1 = Math.floor(Math.random()*6)+1;
+  var d2 = Math.floor(Math.random()*6)+1;
+  var total = d1 + d2 + modifier;
+  output.innerHTML = ("("+ d1 + " + " + d2 +")" + " + " + modifier + " = " ) + total;
+}
+
+function rollcustom (){
+	var modifier = parseInt(document.getElementById('mod').value);
+	var dNumber = parseInt(document.getElementById('dNumber').value);
+  var dSides = parseInt(document.getElementById('dSides').value);
+  var dice = [];
+  
+  for (;dNumber > 0; --dNumber){
+  	dice[dNumber] = Math.floor(Math.random()*dSides)+1;
+  }
+  function getSum(a,b){
+  	return a + b;
+  }
+  var total = dice.reduce(getSum, 0) + modifier;
+  var partOut = ("("+dice +" "+ ")" + " + " + modifier + " = " + total).replace(/,/g," + ")
+  output.innerHTML = partOut.slice(0,1) + partOut.slice(3);
+}
+    
+    </script>
+  </body>
+</html>
